@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<header>
+<h1> CÂU LẠC BỘ</h1>
+<p>Trường THPT Võ Nguyên Giáp</p>
+<p>Khám phá – Sáng tạo – Phát triển toàn diện</p>
+</header>
+
+<nav>
+<a href="#stem">STEM</a>
+<a href="#theduc">Thể dục</a>
+<a href="#songxanh">Sống xanh</a>
+<a href="#vanhoadoc">Văn hóa đọc</a>
+<a href="#tienganh">Tiếng Anh</a>
+<a href="#phapluat">Pháp luật</a>
+<a href="#vannghe">Văn nghệ</a>
+</nav>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hệ Thống 7 Câu Lạc Bộ - THPT Võ Nguyên Giáp</title>
+
+<style>
+/* FOOTER LINK MÀU TRẮNG */
+.footer-pro a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.footer-pro a:hover{
+    color:#ffd54f;
+    padding-left:5px;
+}
+.hero{
+    height:100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1523580846011-d3a5bc25702b") center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    position:relative;
+}
+
+.hero-content{
+    animation: fadeIn 2s ease;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+.hero h2{
+    font-size:28px;
+    margin-bottom:20px;
+    color:#ff9800;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+    margin-bottom:30px;
+    font-size:18px;
+}
+
+.hero-buttons a{
+    text-decoration:none;
+    padding:12px 28px;
+    margin:10px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn-main{
+    background:#ff5722;
+    color:white;
+}
+
+.btn-main:hover{
+    background:#ff9800;
+    transform:scale(1.1);
+}
+
+.btn-outline{
+    border:2px solid white;
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:black;
+    transform:scale(1.1);
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+#bgCanvas{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+/* ===== NÂNG CẤP PRO VERSION ===== */
+
+/* Hiệu ứng kính mờ cao cấp */
+section {
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(15px);
+}
+
+/* Hiệu ứng phát sáng khi hover */
+section:hover {
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+}
+
+/* Tiêu đề phát sáng */
+h2 {
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right,#00c6ff,#0072ff);
+    border-radius: 5px;
+}
+
+/* Animation ảnh mượt hơn */
+img {
+    object-fit: cover;
+    height: 280px;
+}
+
+/* Nav khi cuộn đổi màu */
+nav.scrolled {
+    background: #062a63;
+    transition: 0.4s;
+}
+
+/* Badge số thứ tự câu lạc bộ */
+section::before {
+    content: "CLB";
+    position: absolute;
+    top: -15px;
+    right: 25px;
+    background: linear-gradient(45deg,#ff9800,#ff5722);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Glow cho manager */
+.manager-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.manager-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+    transition: 0.6s;
+}
+
+.manager-card:hover::after {
+    left: 100%;
+}
+.manager-card{
+    margin-top:20px;
+    padding:18px 20px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+    color:white;
+    font-weight:600;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    display:flex;
+    align-items:center;
+    gap:15px;
+    transition:0.4s;
+}
+
+.manager-card:hover{
+    transform:translateY(-5px) scale(1.02);
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+.manager-icon{
+    background:white;
+    color:#1565c0;
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:20px;
+    font-weight:bold;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg,#e3f2fd,#f1f8e9,#e8f5e9,#e1f5fe);
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* THANH TIẾN TRÌNH */
+#progressBar{
+    position:fixed;
+    top:0;
+    left:0;
+    height:5px;
+    background:linear-gradient(to right,#00c6ff,#0072ff);
+    width:0%;
+    z-index:2000;
+}
+
+/* HEADER */
+header{
+    background:rgba(13,71,161,0.9);
+    backdrop-filter:blur(10px);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+header h1{
+    font-size:34px;
+    letter-spacing:1px;
+}
+
+header p{
+    margin-top:10px;
+    opacity:0.9;
+}
+
+/* NAV */
+nav{
+    background:#0b3c8c;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:14px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:8px 18px;
+    font-weight:600;
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    left:0;
+    bottom:-4px;
+    background:yellow;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* SECTION */
+section{
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(10px);
+    margin:50px auto;
+    width:92%;
+    max-width:1100px;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.1);
+    transform:translateY(40px);
+    opacity:0;
+    transition:0.8s;
+}
+
+section.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+h2{
+    color:#0d47a1;
+    margin-bottom:25px;
+    font-size:26px;
+    border-left:6px solid #42a5f5;
+    padding-left:12px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.box h3{
+    color:#1565c0;
+    margin-bottom:10px;
+}
+
+ul{
+    padding-left:20px;
+    line-height:1.6;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+th{
+    background:linear-gradient(to right,#1565c0,#42a5f5);
+    color:white;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+    text-align:center;
+    background:#f4f9ff;
+}
+
+tr:nth-child(even) td{
+    background:#e3f2fd;
+}
+
+table,th,td{
+    border:1px solid #ddd;
+}
+
+.manager{
+    margin-top:15px;
+    padding:12px;
+    background:#e8f5e9;
+    border-left:5px solid #43a047;
+    border-radius:8px;
+    font-weight:600;
+}
+
+img{
+    width:100%;
+    border-radius:18px;
+    margin-top:25px;
+    transition:0.5s;
+}
+
+img:hover{
+    transform:scale(1.05);
+}
+
+footer{
+    text-align:center;
+    background:#0d47a1;
+    color:white;
+    padding:20px;
+    margin-top:50px;
+}
+
+/* NÚT LÊN ĐẦU */
+#topBtn{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#1565c0;
+    color:white;
+    padding:12px 16px;
+    border:none;
+    border-radius:50%;
+    font-size:18px;
+    cursor:pointer;
+    display:none;
+}
+
+@media(max-width:768px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bgCanvas"></canvas>
+<div id="progressBar"></div>
+
+<!-- 1 STEM -->
+<section id="stem">
+<h2>1. Câu Lạc Bộ STEM</h2>
+<div class="grid">
+<div>
+<h3>a Tôn chỉ</h3>
+<p>
+Câu lạc bộ STEM hướng tới việc phát triển tư duy sáng tạo, tư duy logic và khả năng giải quyết vấn đề cho học sinh thông qua các hoạt động khoa học – công nghệ – kỹ thuật – toán học. 
+CLB tạo môi trường để học sinh được thực hành, trải nghiệm và ứng dụng kiến thức vào thực tế, từ đó nuôi dưỡng niềm đam mê nghiên cứu và sáng tạo công nghệ trong tương lai.
+</p>
+<h3>b Tiêu chí</h3>
+<ul>
+<li>Yêu thích khoa học, công nghệ và sáng tạo.</li>
+<li>Có tinh thần học hỏi và chủ động tìm tòi kiến thức mới.</li>
+<li>Có khả năng làm việc nhóm và phối hợp hiệu quả.</li>
+<li>Tham gia đầy đủ các buổi sinh hoạt và hoạt động dự án.</li>
+<li>Có trách nhiệm trong quá trình thực hiện sản phẩm.</li>
+</ul>
+</div>
+<div>
+<div class="manager-card">
+<div class="manager-icon">👤</div>
+<div>
+Người phụ trách<br>
+Cô Phan Thị Điệp
+</div>
+</div>
+<a href="https://ibb.co/Xfvyh5zf"><img src="https://i.ibb.co/GfbsKMVf/IMG-1771434493322-1771434588527.jpg" alt="IMG-1771434493322-1771434588527" border="0"></a>
+</section>
+<!-- 2 Thể dục -->
+<section id="theduc">
+<h2>2. Câu Lạc Bộ Thể Dục</h2>
+<div class="grid">
+<div>
+<h3>a Tôn chỉ</h3>
+<p>
+Câu lạc bộ Thể dục nhằm rèn luyện sức khỏe thể chất, nâng cao tinh thần đồng đội và xây dựng lối sống năng động cho học sinh. 
+Thông qua các hoạt động thể thao, CLB giúp học sinh phát triển ý chí, sự kiên trì, tinh thần fair-play và khả năng phối hợp trong tập thể.
+</p>
+<h3>b Tiêu chí</h3>
+<ul>
+<li>Yêu thích vận động và thể thao.</li>
+<li>Có tinh thần kỷ luật và tôn trọng luật chơi.</li>
+<li>Sẵn sàng hợp tác và hỗ trợ đồng đội.</li>
+<li>Tham gia luyện tập và thi đấu nghiêm túc.</li>
+<li>Giữ gìn hình ảnh đẹp của CLB trong các hoạt động.</li>
+</ul>
+</div>
+<div>
+<div class="manager-card">
+<div class="manager-icon">👤</div>
+<div>
+Người phụ trách<br>
+Thầy Đỗ Tấn Khương
+</div>
+</div>
+<a href="https://ibb.co/DPfc6Qny"><img src="https://i.ibb.co/twpjND5t/IMG-20260219-221206.jpg" alt="IMG-20260219-221206" border="0"></a>
+</section>
+
+<!-- 3 Sống xanh -->
+<section id="songxanh">
+<h2>3. Câu Lạc Bộ Sống Xanh</h2>
+<div class="grid">
+<div>
+<h3>a Tôn chỉ</h3>
+<p>
+Câu lạc bộ Sống Xanh được thành lập với mục tiêu nâng cao ý thức bảo vệ môi trường và lan tỏa lối sống bền vững trong học sinh. 
+CLB tổ chức nhiều hoạt động thiết thực như thu gom rác, trồng cây, tái chế và tuyên truyền nhằm góp phần xây dựng môi trường học đường xanh – sạch – đẹp.
+</p>
+<h3>b Tiêu chí</h3>
+<ul>
+<li>Có ý thức bảo vệ môi trường sống.</li>
+<li>Tích cực tham gia các hoạt động cộng đồng.</li>
+<li>Có trách nhiệm với thiên nhiên và xã hội.</li>
+<li>Sẵn sàng đóng góp ý tưởng cho các dự án xanh.</li>
+<li>Duy trì tinh thần nhiệt huyết và sáng tạo.</li>
+</ul>
+</div>
+<div>
+
+<div class="manager-card">
+<div class="manager-icon">👤</div>
+<div>
+Người phụ trách<br>
+Cô Nguyễn Thị Thúy Hằng
+</div>
+</div>
+<a href="https://ibb.co/gFdDRYF4"><img src="https://i.ibb.co/cXwNrqXY/IMG-20260219-221159.jpg" alt="IMG-20260219-221159" border="0"></a>
+</section>
+
+<!-- 4 Văn hóa đọc -->
+<section id="vanhoadoc">
+<h2>4. Câu Lạc Bộ Văn Hóa Đọc</h2>
+<div class="grid">
+<div>
+<h3>a Tôn chỉ</h3>
+<p>
+Câu lạc bộ Văn hóa đọc hướng đến việc xây dựng thói quen đọc sách, phát triển tư duy phản biện và khả năng trình bày quan điểm cá nhân. 
+CLB tạo không gian để học sinh trao đổi, thảo luận và chia sẻ kiến thức từ nhiều lĩnh vực khác nhau, góp phần mở rộng hiểu biết và nuôi dưỡng tâm hồn.
+</p>
+<h3>b Tiêu chí</h3>
+<ul>
+<li>Yêu thích đọc sách và khám phá tri thức.</li>
+<li>Có khả năng lắng nghe và chia sẻ quan điểm.</li>
+<li>Tham gia sinh hoạt đều đặn và tích cực.</li>
+<li>Tôn trọng ý kiến đa chiều.</li>
+<li>Có tinh thần xây dựng và học hỏi.</li>
+</ul>
+</div>
+<div>
+<div class="manager-card">
+<div class="manager-icon">👤</div>
+<div>
+Người phụ trách<br>
+Cô Vũ Thị Lan Hương
+</div>
+</div>
+<img src="https://photo.znews.vn/w660/Uploaded/jopluat/2024_03_04/img_9608.jpg">
+</section>
+
+<!-- 5 Tiếng Anh -->
+<section id="tienganh">
+<h2>5. Câu Lạc Bộ Tiếng Anh</h2>
+<div class="grid">
+<div>
+<h3>a Tôn chỉ</h3>
+<p>
+Câu lạc bộ Tiếng Anh được thành lập nhằm nâng cao kỹ năng giao tiếp, phản xạ và sử dụng tiếng Anh trong môi trường thực tế. 
+CLB tạo điều kiện để học sinh tự tin thể hiện bản thân thông qua các hoạt động thảo luận, tranh biện và giao lưu văn hóa quốc tế.
+</p>
+<h3>b Tiêu chí</h3>
+<ul>
+<li>Có mong muốn cải thiện kỹ năng tiếng Anh.</li>
+<li>Tự tin giao tiếp và phát biểu trước đám đông.</li>
+<li>Chủ động luyện tập và tham gia hoạt động.</li>
+<li>Tôn trọng sự khác biệt văn hóa.</li>
+<li>Có tinh thần hợp tác và hỗ trợ lẫn nhau.</li>
+</ul>
+</div>
+<div>
+<div class="manager-card">
+<div class="manager-icon">👤</div>
+<div>
+Người phụ trách<br>
+Cô Nguyễn Thanh Nhã
+</div>
+</div>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyl723trMdTVH8zj8zGvPmk8xVr0-mJShosGpXO9TQ4Qpy-eYCmnSOIAY&s=10">
+</section>
+<!-- 6 Pháp luật -->
+<section id="phapluat">
+<h2>6. Câu Lạc Bộ Pháp Luật</h2>
+<div class="grid">
+<div>
+<h3>a Tôn chỉ</h3>
+<p>
+Câu lạc bộ Pháp luật giúp học sinh trang bị kiến thức cơ bản về pháp luật, quyền và nghĩa vụ công dân. 
+CLB tổ chức các buổi thảo luận, phiên tòa giả định và hoạt động tuyên truyền nhằm nâng cao nhận thức pháp lý và xây dựng ý thức sống và làm việc theo Hiến pháp và pháp luật.
+</p>
+<h3>b Tiêu chí</h3>
+<ul>
+<li>Có ý thức chấp hành pháp luật.</li>
+<li>Nghiêm túc và có tinh thần trách nhiệm.</li>
+<li>Tham gia đầy đủ các hoạt động chuyên đề.</li>
+<li>Có khả năng tư duy logic và phân tích vấn đề.</li>
+<li>Tôn trọng sự công bằng và lẽ phải.</li>
+</ul>
+</div>
+<div>
+<div class="manager-card">
+<div class="manager-icon">👤</div>
+<div>
+Người phụ trách<br>
+Cô Phạm Thị Tám
+</div>
+</div>
+<img src="https://pbgdpl.moj.gov.vn/qt/tintuc/PublishingImages/N%C4%83m%202022/Th%C3%A1ng%2012/3324325364645.jpg">
+</section>
+
+<!-- 7 Văn nghệ -->
+<section id="vannghe">
+<h2>7. Câu Lạc Bộ Văn Nghệ</h2>
+<div class="grid">
+<div>
+<h3>a Tôn chỉ</h3>
+<p>
+Câu lạc bộ Văn nghệ nhằm phát triển năng khiếu nghệ thuật và tạo sân chơi sáng tạo cho học sinh. 
+CLB tổ chức các hoạt động biểu diễn, luyện tập và tham gia sự kiện của trường, góp phần xây dựng môi trường học đường năng động và giàu cảm xúc.
+</p>
+<h3>b Tiêu chí</h3>
+<ul>
+<li>Yêu thích ca hát, nhảy múa hoặc biểu diễn nghệ thuật.</li>
+<li>Tự tin thể hiện bản thân trước tập thể.</li>
+<li>Chăm chỉ luyện tập và nâng cao kỹ năng.</li>
+<li>Hợp tác tốt trong các tiết mục nhóm.</li>
+<li>Có tinh thần trách nhiệm khi tham gia biểu diễn.</li>
+</ul>
+</div>
+<div>
+<div class="manager-card">
+<div class="manager-icon">👤</div>
+<div>
+Người phụ trách<br>
+Cô Nguyễn Thị Ly
+</div>
+</div>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/BHSY8WpY/vannghe.jpg" alt="vannghe" border="0"></a>
+</section>
+
+<button id="topBtn" onclick="topFunction()">↑</button>
+
+<script>
+function toggleDark(){
+    document.body.classList.toggle("dark");
+}
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+    particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*3+1,
+        dx: Math.random()*1-0.5,
+        dy: Math.random()*1-0.5
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="rgba(255,255,255,0.7)";
+    particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+
+        p.x+=p.dx;
+        p.y+=p.dy;
+
+        if(p.x<0||p.x>canvas.width)p.dx*=-1;
+        if(p.y<0||p.y>canvas.height)p.dy*=-1;
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+/* Nav đổi màu khi cuộn */
+window.addEventListener("scroll", function() {
+    let nav = document.querySelector("nav");
+    if (window.scrollY > 100) {
+        nav.classList.add("scrolled");
+    } else {
+        nav.classList.remove("scrolled");
+    }
+});
+
+/* Hiệu ứng xuất hiện mượt */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.transition = "all 1s ease";
+            entry.target.style.transform = "translateY(0)";
+            entry.target.style.opacity = "1";
+        }
+    });
+});
+
+document.querySelectorAll("section").forEach(sec => {
+    sec.style.transform = "translateY(60px)";
+    sec.style.opacity = "0";
+    observer.observe(sec);
+});
+/* THANH CUỘN */
+window.onscroll=function(){
+    let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+    let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+    let scrolled=(winScroll/height)*100;
+    document.getElementById("progressBar").style.width=scrolled+"%";
+
+    if(winScroll>300){
+        document.getElementById("topBtn").style.display="block";
+    }else{
+        document.getElementById("topBtn").style.display="none";
+    }
+};
+
+/* NÚT LÊN ĐẦU */
+function topFunction(){
+    document.body.scrollTop=0;
+    document.documentElement.scrollTop=0;
+}
+
+/* ANIMATION KHI CUỘN */
+let sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+    sections.forEach(sec=>{
+        let position=sec.getBoundingClientRect().top;
+        if(position<window.innerHeight-100){
+            sec.classList.add("show");
+        }
+    });
+});
+</script>
+<!-- FOOTER PRO -->  
+<footer id="footer" class="footer-pro">  
+
+<div class="footer-container">  
+
+    <!-- Cột 1 -->  
+    <div class="footer-col">  
+        <h3>THPT Võ Nguyên Giáp</h3>  
+        <p>  
+            Hệ thống 7 câu lạc bộ giúp học sinh phát triển toàn diện   
+            từ học thuật, kỹ năng mềm đến nghệ thuật và thể chất.  
+        </p>  
+    </div>  
+
+    <!-- Cột 2 -->  
+    <div class="footer-col">  
+        <h3>Liên Kết Nhanh</h3>  
+        <ul>  
+            <li><a href="#stem">CLB STEM</a></li>  
+            <li><a href="#theduc">CLB Thể Dục</a></li>  
+            <li><a href="#songxanh">CLB Sống Xanh</a></li>  
+            <li><a href="#vanhoadoc">CLB Văn Hóa Đọc</a></li>  
+            <li><a href="#tienganh">CLB Tiếng Anh</a></li>  
+            <li><a href="#phapluat">CLB Pháp Luật</a></li>  
+            <li><a href="#vannghe">CLB Văn Nghệ</a></li>  
+        </ul>  
+    </div>  
+
+    <!-- Cột 3 -->  
+    <div class="footer-col">  
+        <h3>Đăng ký tham gia</h3>  
+        <input type="text" placeholder="Họ và tên">  
+        <input type="email" placeholder="Email">  
+        <button>Gửi đăng ký</button>  
+    </div>  
+
+</div>  
+
+<div class="footer-bottom">  
+    © 2026 - THPT Võ Nguyên Giáp |    thiết kế bởi Trung đẹp trai 12A2    🚀  
+</div>
+
+</footer>
+</body>
+</html>
